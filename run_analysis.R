@@ -54,4 +54,5 @@ run_analysis <- function() {
       mean_set <- merged_set[order(c(merged_set$subject, merged_set$mean)), ]
       mean_set <- aggregate(.~subject+activity, mean_set, mean)
       write.table(mean_set, "mean_set.txt", row.name=FALSE)
+      mean_set
 }
