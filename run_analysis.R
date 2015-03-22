@@ -29,7 +29,7 @@ run_analysis <- function() {
       names(merged_activities) <- "activity"
       merged_set <- cbind(merged_activities, merged_set)
       
-      # load test and train subject data, merge it,  collect garbage,
+      # load test and train subject data, merge it, collect garbage,
       # add subject column to merged set
       subject_test <- read.table("test/subject_test.txt")
       subject_train <- read.table("train/subject_train.txt")
@@ -50,7 +50,7 @@ run_analysis <- function() {
       # finally save merged data
       write.table(merged_set, "tidy_data.txt", row.name=FALSE)
       
-      # sort merged set,get mean of all variables, write mean set
+      # sort merged set, get mean of all variables, write mean set
       mean_set <- merged_set[order(c(merged_set$subject, merged_set$mean)), ]
       mean_set <- aggregate(.~subject+activity, mean_set, mean)
       write.table(mean_set, "mean_set.txt", row.name=FALSE)
